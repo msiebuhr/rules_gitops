@@ -533,6 +533,9 @@ def _kubectl_impl(ctx):
     namespace = ctx.attr.namespace
     for inattr in ctx.attr.srcs:
         for infile in inattr.files.to_list():
+            statements += "echo Running kubectl {kubectl_command} --cluster=\"$CLUSTER\" --user=\"$USER\" -f ...\n".format(
+                kubectl_command = kubectl_command_arg,
+            )
             statements += "{template_engine} --template={infile} --variable=NAMESPACE={namespace} --stamp_info_file={info_file} | kubectl --cluster=\"$CLUSTER\" --user=\"$USER\" {kubectl_command} -f -\n".format(
                 infile = infile.short_path,
                 kubectl_command = kubectl_command_arg,
