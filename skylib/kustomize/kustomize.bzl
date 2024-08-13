@@ -506,7 +506,7 @@ def _kubectl_impl(ctx):
         if "{" in ctx.attr.user:
             user_arg = stamp(ctx, user_arg, files, ctx.label.name + ".user-name", True)
     else:
-        user_arg = """$(kubectl config view -o jsonpath='{.users[?(@.name == '"\\"${CLUSTER}\\")].name}")"""
+        user_arg = """$(kubectl config view -o jsonpath='{.contexts[?(@.context.cluster == '"\\"${CLUSTER}\\")].context.user}")"""
 
     kubectl_command_arg = ctx.attr.command
     kubectl_command_arg = ctx.expand_make_variables("kubectl_command", kubectl_command_arg, {})
