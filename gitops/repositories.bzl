@@ -17,13 +17,13 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 load("@rules_gitops//skylib/kustomize:kustomize.bzl", "kustomize_setup")
 load("@rules_oci//oci:dependencies.bzl", "rules_oci_dependencies")
-load("@rules_oci//oci:repositories.bzl", "LATEST_CRANE_VERSION", "oci_register_toolchains")
+load("@rules_oci//oci:repositories.bzl", "oci_register_toolchains")
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 load(
     ":toolchains.bzl",
-    _register_kustomize_toolchains = "register_kustomize_toolchains",
     _DEFAULT_KUSTOMIZE_REPOSITORY = "DEFAULT_KUSTOMIZE_REPOSITORY",
     _DEFAULT_KUSTOMIZE_VERSION = "DEFAULT_KUSTOMIZE_VERSION",
+    _register_kustomize_toolchains = "register_kustomize_toolchains",
 )
 
 def rules_gitops_repositories():
@@ -43,7 +43,6 @@ def rules_gitops_repositories():
     rules_oci_dependencies()
     oci_register_toolchains(
         name = "oci",
-        crane_version = LATEST_CRANE_VERSION,
     )
 
 # Re-host for backwards compatiblity

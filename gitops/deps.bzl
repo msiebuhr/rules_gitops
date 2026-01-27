@@ -65,7 +65,7 @@ def rules_gitops_dependencies():
     maybe(
         http_archive,
         name = "rules_oci",
-        sha256 = "cf6b8be82cde30daef18a09519d75269650317e40d917c8633cf8e3ab5645ea5",
-        strip_prefix = "rules_oci-1.7.2",
-        url = "https://github.com/bazel-contrib/rules_oci/releases/download/v1.7.2/rules_oci-v1.7.2.tar.gz",
+        sha256 = "d007e6c96eb62c88397b68f329e4ca56e0cfe31204a2c54b0cb17819f89f83c8",
+        strip_prefix = "rules_oci-2.0.0",
+        url = "https://github.com/bazel-contrib/rules_oci/releases/download/v2.0.0/rules_oci-v2.0.0.tar.gz",
     )
